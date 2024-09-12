@@ -1,10 +1,16 @@
 "use client"
-
+import { ReactNode } from 'react';
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button";
+
+interface NavItemProps {
+  href: string;
+  children: ReactNode;
+  onClick: () => void;
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,12 +37,12 @@ export default function Navbar() {
   )
 }
 
-function NavItem({ href, children, onClick }) {
+function NavItem({ href, children, onClick }: NavItemProps) {
   return (
     <Link href={href} passHref>
       <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-primary/10" onClick={onClick}>
         {children}
       </Button>
     </Link>
-  )
+  );
 }

@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
+import { ModeToggle } from './theme-toggle';
 
 import { Button } from "@/components/ui/button";
 
@@ -33,6 +34,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      <div><ModeToggle/></div>
     </nav>
   )
 }

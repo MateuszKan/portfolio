@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { ThemeProvider } from "@/components/theme-provider"
+
 
 import { cn } from '@/lib/utils'
 const geistSans = localFont({
@@ -34,7 +35,10 @@ export default function RootLayout({
         'flex min-h-screen flex-col font-sans antialiased',
       )}
     >
-      <ThemeProvider>
+      <ThemeProvider  attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
         <Header />
         <main className='grow'>{children}</main>
         <Footer />

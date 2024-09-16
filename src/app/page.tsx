@@ -1,8 +1,17 @@
 import Image from "next/image"
-import Navbar from "@/components/navbar"
+import Intro from "@/components/intro"
 export default function Home() {
   return (
-    <div><Navbar/></div>
+    <section className='pb-24 pt-40'>
+      <div className='container max-w-3xl'>
+        <Intro />
+
+    {/*   <RecentPosts />
+        <RecentProjects />
+
+        <NewsletterForm /> */}
+      </div>
+    </section>
 
 )
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
+import Header from "../components/header";
 import Footer from "../components/footer";
 
 import { cn } from '@/lib/utils'
@@ -27,20 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(
-          'flex min-h-screen flex-col font-sans antialiased')}>
-      <head />
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main className='grow'>{children}</main>
-          <Footer/>
-        </ThemeProvider>
-      </body>
-    </html>
+    <html lang='en' suppressHydrationWarning>
+    <body
+      className={cn(
+        'flex min-h-screen flex-col font-sans antialiased',
+      )}
+    >
+      <ThemeProvider>
+        <Header />
+        <main className='grow'>{children}</main>
+        <Footer />
+      </ThemeProvider>
+    </body>
+  </html>
   );
 }

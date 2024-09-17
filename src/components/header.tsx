@@ -31,7 +31,7 @@ export default function Header() {
       {/* Navigation items */}
       <div className={`flex flex-col lg:flex-row gap-2 lg:ml-4 w-full justify-center ${isOpen ? 'block' : 'hidden lg:flex'}`}>
         <NavItem href="/" onClick={toggleMenu}>Home</NavItem>
-        <NavItem href="/about" onClick={toggleMenu}>About</NavItem>
+        <NavItem href="/posts" onClick={toggleMenu}>Posts</NavItem>
         <NavItem href="/projects" onClick={toggleMenu}>Projects</NavItem>
         <NavItem href="/contact" onClick={toggleMenu}>Contact</NavItem>
       </div>

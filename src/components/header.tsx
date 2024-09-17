@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-1/2 max-w-7xl px-4">
-  <div className="navbar flex items-center justify-between w-full rounded-[20px] p-2 shadow">
+  <div className="navbar backdrop-blur-lg flex items-center justify-between w-full rounded-[20px] p-2 shadow">
     {/* Left section: Hamburger and Nav Items */}
     <div className="flex items-center w-full">
       {/* Hamburger menu button */}
@@ -50,7 +50,7 @@ export default function Header() {
 function NavItem({ href, children, onClick }: NavItemProps) {
   return (
     <Link href={href} passHref>
-      <Button variant="ghost" className="text-gray-900 dark:text-gray-100 hover:text-primary hover:bg-primary/10 outline-none" onClick={onClick}>
+      <Button variant="ghost" onClick={onClick}>
         {children}
       </Button>
     </Link>

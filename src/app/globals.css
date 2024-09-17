@@ -103,10 +103,10 @@
     @apply font-medium;
   }
     .navbar {
-      @apply bg-gray-200 text-black;
+      @apply bg-gray-200 text-black backdrop-blur-lg bg-opacity-25
     }
 
     .dark .navbar {
-      @apply bg-gray-800 text-white;
+      @apply bg-gray-800 text-white backdrop-blur-lg bg-opacity-25
 }
 }

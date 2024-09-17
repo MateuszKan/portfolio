@@ -18,28 +18,32 @@ export default function Header() {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-7xl px-4">
-      <div className="navbar flex items-center justify-between rounded-[20px] p-2 shadow">
-        <div className="flex items-center">
-          {/* Hamburger menu button */}
-          <Button variant="ghost" size="icon" className="lg:hidden outline-none" onClick={toggleMenu}>
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            <span className="sr-only">Toggle menu</span>
-          </Button>
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-1/2 max-w-7xl px-4">
+  <div className="navbar flex items-center justify-between w-full rounded-[20px] p-2 shadow">
+    {/* Left section: Hamburger and Nav Items */}
+    <div className="flex items-center w-full">
+      {/* Hamburger menu button */}
+      <Button variant="ghost" size="icon" className="lg:hidden outline-none" onClick={toggleMenu}>
+        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        <span className="sr-only">Toggle menu</span>
+      </Button>
 
-          {/* Navigation items */}
-          <div className={`flex flex-col lg:flex-row gap-2 lg:ml-4 ${isOpen ? 'block' : 'hidden lg:flex'}`}>
-            <NavItem href="/" onClick={toggleMenu}>Home</NavItem>
-            <NavItem href="/about" onClick={toggleMenu}>About</NavItem>
-            <NavItem href="/projects" onClick={toggleMenu}>Projects</NavItem>
-            <NavItem href="/contact" onClick={toggleMenu}>Contact</NavItem>
-          </div>
-        </div>
-        <div className="ml-auto">
-          <ModeToggle />
-        </div>
+      {/* Navigation items */}
+      <div className={`flex flex-col lg:flex-row gap-2 lg:ml-4 w-full justify-center ${isOpen ? 'block' : 'hidden lg:flex'}`}>
+        <NavItem href="/" onClick={toggleMenu}>Home</NavItem>
+        <NavItem href="/about" onClick={toggleMenu}>About</NavItem>
+        <NavItem href="/projects" onClick={toggleMenu}>Projects</NavItem>
+        <NavItem href="/contact" onClick={toggleMenu}>Contact</NavItem>
       </div>
-    </nav>
+    </div>
+
+    {/* Right section: ModeToggle */}
+    <div className="ml-4">
+      <ModeToggle />
+    </div>
+  </div>
+</nav>
+
   )
 }
 

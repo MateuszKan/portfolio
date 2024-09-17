@@ -102,13 +102,11 @@
   .prose code span {
     @apply font-medium;
   }
-    /* Styl dla navbaru w trybie light */
     .navbar {
-      @apply bg-gray-200 text-black; /* Ciemniejszy navbar w light mode */
+      @apply bg-gray-200 text-black;
     }
 
-    /* Styl dla navbaru w trybie dark */
     .dark .navbar {
-      @apply bg-gray-800 text-white; /* Jaśniejszy navbar w dark mode */
-    }
+      @apply bg-gray-800 text-white;
+}
 }

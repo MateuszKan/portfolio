@@ -1,4 +1,5 @@
 import Image from "next/image"
+import RecentPosts from "@/components/recent-posts"
 import Intro from "@/components/intro"
 export default function Home() {
   return (
@@ -6,8 +7,8 @@ export default function Home() {
       <div className='container max-w-3xl'>
         <Intro />
 
-    {/*   <RecentPosts />
-        <RecentProjects />
+     <RecentPosts />
+        {/*  <RecentProjects />
 
         <NewsletterForm /> */}
       </div>

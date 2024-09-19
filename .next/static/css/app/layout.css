@@ -768,6 +768,12 @@ video {
   padding-right: 2rem;
   padding-left: 2rem;
 }
+@media (min-width: 320px) {
+
+  .container {
+    max-width: 320px;
+  }
+}
 @media (min-width: 1400px) {
 
   .container {

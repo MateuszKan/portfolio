@@ -18,7 +18,7 @@ export default function Header() {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-1/2 max-w-7xl px-4">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 xs:w-3/4 max-w-7xl px-4">
   <div className="navbar backdrop-blur-lg flex items-center justify-between w-full rounded-[20px] p-2 shadow">
     {/* Left section: Hamburger and Nav Items */}
     <div className="flex items-center w-full">

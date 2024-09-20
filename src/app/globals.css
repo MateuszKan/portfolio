@@ -109,4 +109,7 @@
     .dark .navbar {
       @apply bg-gray-800 text-white backdrop-blur-lg bg-opacity-25
 }
+.margin-fix{
+ @apply margin: 0 !important;
+}
 }

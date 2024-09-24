@@ -1,5 +1,14 @@
 {
-  "node": {},
+  "node": {
+    "a56c67a7b491effacf2a3a77b23c15f3c38606ef": {
+      "workers": {
+        "app/contact/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmateuszkantarewicz%2FDesktop%2Fportfolio%2Fsrc%2Flib%2Factions.tsx%22%2C%5B%22sendEmail%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/contact/page": "action-browser"
+      }
+    }
+  },
   "edge": {},
-  "encryptionKey": "cYrevHnLRi1L2hRfL337cjikkYIv13ptdlNAK3bw4w8="
+  "encryptionKey": "hReeUbdU94ERePPFlvR/nT6/BaHUhtZib1heRPOy/JM="
 }

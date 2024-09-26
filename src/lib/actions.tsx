@@ -40,25 +40,26 @@ export async function sendEmail(data: ContactFormInputs) {
 
 
 export async function subscribe(data: NewsletterFormInputs) {
-  const result = NewsletterFormSchema.safeParse(data)
 
-  if (result.error) {
-    return { error: result.error.format() }
+  const result = NewsletterFormSchema.safeParse(data);
+
+  if (!result.success) {
+    return { error: result.error.format() };
   }
 
   try {
-    const { email } = result.data
-    const { data, error } = await resend.contacts.create({
+    const { email } = result.data;
+    const { data: responseData, error } = await resend.contacts.create({
       email: email,
-      audienceId: process.env.RESEND_AUDIENCE_ID as string
-    })
+      audienceId: process.env.RESEND_AUDIENCE_ID as string,
+    });
 
-    if (!data || error) {
-      throw new Error('Failed to subscribe')
+    if (!responseData || error) {
+      throw new Error('Failed to subscribe to the newsletter');
     }
 
-    return { success: true }
+    return { success: true };
   } catch (error) {
-    return { error }
+    return { error: error instanceof Error ? error.message : 'An unexpected error occurred' };
   }
 }

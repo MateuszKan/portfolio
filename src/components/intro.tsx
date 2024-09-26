@@ -25,7 +25,7 @@ export default function Intro() {
           />
         </div>
       </div>
-      <ProfileButtons linkedInUrl="https://www.linkedin.com/in/mateuszkan" cvUrl="https://www.linkedin.com/in/mateuszkan" />
+      <ProfileButtons linkedInUrl="https://www.linkedin.com/in/mateuszkan" cvUrl="/cv/Mateusz_Kantarewicz.pdf" />
     </section>
   )
 }

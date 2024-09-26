@@ -5,6 +5,7 @@ import { Resend } from 'resend'
 import { ContactFormSchema, NewsletterFormSchema } from '@/lib/schemas'
 import ContactFormEmail from '@/emails/contact-form-email'
 
+
 type ContactFormInputs = z.infer<typeof ContactFormSchema>
 type NewsletterFormInputs = z.infer<typeof NewsletterFormSchema>
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -19,9 +20,9 @@ export async function sendEmail(data: ContactFormInputs) {
   try {
     const { name, email, message } = result.data
     const { data, error } = await resend.emails.send({
-      from: 'hello@mkantarewicz.dev',
+      from: 'info@codingpaws.io',
       to: [email],
-      cc: ['hello@mkantarewicz.dev'],
+      cc: ['info@codingpaws.io'],
       subject: 'Contact form submission',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       react: ContactFormEmail({ name, email, message })
@@ -37,51 +38,27 @@ export async function sendEmail(data: ContactFormInputs) {
   }
 }
 
-export async function subscribe(data: NewsletterFormInputs) {
-  const result = NewsletterFormSchema.safeParse(data);
 
-  if (!result.success) {
-    return { error: result.error.format() };
+export async function subscribe(data: NewsletterFormInputs) {
+  const result = NewsletterFormSchema.safeParse(data)
+
+  if (result.error) {
+    return { error: result.error.format() }
   }
 
   try {
-    const { email } = result.data;
-    const { data: contactData, error: contactError } = await resend.contacts.create({
+    const { email } = result.data
+    const { data, error } = await resend.contacts.create({
       email: email,
-      audienceId: process.env.RESEND_AUDIENCE_ID as string,
-    });
+      audienceId: process.env.RESEND_AUDIENCE_ID as string
+    })
 
-    if (!contactData || contactError) {
-      throw new Error('Failed to subscribe');
+    if (!data || error) {
+      throw new Error('Failed to subscribe')
     }
 
-
-    await sendWelcomeEmail(email);
-
-    return { success: true };
+    return { success: true }
   } catch (error) {
-    console.error('Subscription error:', error);
-    return { error: (error instanceof Error) ? error.message : 'An unexpected error occurred' };
-  }
-}
-
-async function sendWelcomeEmail(email: string) {
-  const subject = 'Welcome to Our Newsletter!';
-  const message = `
-    <h1>Welcome!</h1>
-    <p>Thank you for subscribing to our newsletter. We're excited to have you!</p>
-  `;
-
-  try {
-
-    await sendEmail({
-      message: message,
-      name: 'Subscriber',
-      email: email,
-    });
-    console.log(`Welcome email sent to ${email}`);
-  } catch (error) {
-    console.error('Error sending welcome email:', error);
-    throw new Error('Failed to send welcome email');
+    return { error }
   }
 }
